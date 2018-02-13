@@ -1,0 +1,57 @@
+\documentclass[UTF8]{ctexart}
+    \usepackage[fleqn]{amsmath}
+    \usepackage{graphicx}
+    \usepackage{fancyhdr}
+    \usepackage{geometry}
+    \usepackage[ruled]{algorithm}
+    \usepackage{algorithmic}
+    \usepackage{fontspec}
+    \newfontfamily\monaco{Monaco}
+
+    \usepackage{listings, lstautogobble}
+    \lstset{
+        numbers=left,
+        numberstyle=\tiny\monaco,
+        basicstyle=\small\monaco,
+        autogobble=true
+    }
+    \pagestyle{fancy}
+    \allowdisplaybreaks
+    \title{程序设计与数据结构综合实践I（周四晚）
+    \\课程作业}
+    \author{15323032 李新锐}
+    \date{\today}
+    \begin{document}
+
+            \newpage
+            \subsection{伪代码算法}
+            \begin{algorithm}
+                \caption{Graph partition}
+                %\label{alg1}
+                \begin{algorithmic}
+                \REQUIRE  undirected graph G of n vertexes
+                \ENSURE return a partition of G in which each subgraph is a Complete graph
+                %\STATE $i \gets 1$
+                \FORALL{vertex $r$ in G} 
+                    \STATE {$e_i \gets degree(r)$ }
+                \ENDFOR
+                \STATE R $\gets$ \{\}
+                \WHILE{$size(G)$ is not $0$}
+                	\STATE $e_{min} = min(e_i)$
+                	\STATE $subG$ $\gets$ {$e_{min}$}
+                	\STATE delete $e_{min}$ and its corresponding vertex from $e_i$ and $G$
+                	\FORALL{remaning vertex $r$ in G} 
+                		\STATE {$e_{min} = min(e_i)$ }
+                		\IF{$subG$ is a complete  after adding vertex corresponding vertex of $e_{min}$}
+                			\STATE delete $e_{min}$ and its corresponding vertex from $e_i$ and $G$
+                		\ELSE
+                			\STATE break
+                		\ENDIF
+                	\ENDFOR
+                	\STATE append $subG$ to R
+                \ENDWHILE
+                \RETURN R 
+                \end{algorithmic}
+              \end{algorithm}
+            \newpage
+    \end{document}
